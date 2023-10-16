@@ -1,0 +1,16 @@
+PackageName,1
+ClassDeclaration,3
+	StudentNumberDeclaration,5
+	ClassRoomDeclaration,6
+	TeacherNameDeclaration,7
+	Constructor,9
+		classRoomInitial,10
+		studentNumberInitial,11
+		teacherNameInitial,12
+	methodAddStudent,15
+		AddStatement,16
+	methodClassRoomNum,19
+		AddStatement,20
+	methodMain,23
+		NewSchoolClass,24
+		addStudentCall,25

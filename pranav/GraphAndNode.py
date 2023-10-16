@@ -29,6 +29,9 @@ class Graph:
         self.root = None
         self.levels = {}
 
+    def getRoot(self):
+        return self.root
+
     def add_node(self, content, level, lineNumber):
         new_node = Node(content, level, lineNumber, None)
 
@@ -54,10 +57,3 @@ class Graph:
             for child in node.children:
                 self.display(child, level + 1)
 
-# Example usage:
-graph = Graph()
-graph.add_node("Root", 0, 1)
-graph.add_node("Child 1", 1, 2)
-graph.add_node("Child 2", 1, 3)
-graph.add_node("Grandchild 1", 2, 4)
-graph.display(graph.root)
