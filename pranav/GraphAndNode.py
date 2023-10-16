@@ -4,12 +4,13 @@ class Node:
         self.level = initLevel
         self.lineNumber = initLineNumber
         self.parent = initParent
+        self.children = []
 
     def getContent(self):
         return self.content
     
     def getLevel(self):
-        return self.initLevel
+        return self.level
     
     def getLineNumber(self):
         return self.lineNumber
@@ -29,7 +30,7 @@ class Graph:
         self.levels = {}
 
     def add_node(self, content, level, lineNumber):
-        new_node = Node(content, level, lineNumber)
+        new_node = Node(content, level, lineNumber, None)
 
         # If the graph is empty, set the new node as the root
         if self.root is None:
@@ -60,5 +61,3 @@ graph.add_node("Child 1", 1, 2)
 graph.add_node("Child 2", 1, 3)
 graph.add_node("Grandchild 1", 2, 4)
 graph.display(graph.root)
-
-
