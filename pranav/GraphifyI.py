@@ -11,7 +11,7 @@ def GraphifyI(file):
         content = tempList[0].lstrip()
         ASTGraph.add_node(content, level, lineNum)
 
-    ASTGraph.display(ASTGraph.root) #to see if the code is working correctly
+    ASTGraph.display() #to see if the code is working correctly
 
 #Testing the code on a dummy AST        
 with open('SchoolClassAST.txt', 'rt') as theFile:
