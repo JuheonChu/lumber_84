@@ -6,4 +6,4 @@ This is a collaborative project between Lumber 84 application development team a
 
 ### Project Contributors
 - Project 1: Boosung Kim, William Cheng, Maximo Sanchez, Shahir Ahmed and Fox Becker
-- Project 2: John Chu, Pranav Mishra, Youssif Goda and Shaikh Ibrahim (Ahnaf) Rahman
+- Project 2: John Chu, Pranav Mishra, Youssif Goda and Shaikh Ibrahim (Ahnaf) Rahman, Michael Freda
