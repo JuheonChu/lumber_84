@@ -1,5 +1,21 @@
+#!/usr/bin/env python
+'''GraphAndNode.py: This python file defines a Node and Graph Class required to process the contents of an Abstract Syntax Tree'''
+'''Informally, an AST is the skeleton of any given computer program; that is, it represents the most important syntax of a 
+program. Formally, an AST is a data structure that comprises the parsed contents of a given program - taking into account the 
+syntax and the semantics of the programming language, including the hierarchy of the program structure (Classes, methods, loops, conditionals)
+as well as sequence of instructions. In particular, this Graph data structure was developed to manage the contents of the ASTs
+generated for the CBasic 86 (CB86) code of 84 Lumber'''
+__author__  = "Pranav Mishra"
+__version__ = "1.0"
+__maintainer__ = "Pranav Mishra"
+__email__ = "mishrap@dickinson.edu"
+
+
 class Node:
+    '''This class defines a node pertaining to a given Abstract Syntax Tree line'''
     def __init__(self, initContent, initLevel, initLineNumber, initParent):
+        '''Each node object consists of some content it represents, the level of the node, the corresponding line number of the code, and a reference 
+        to the parent node'''
         self.content = initContent
         self.level = initLevel
         self.lineNumber = initLineNumber
@@ -40,10 +56,13 @@ class Node:
         newChild.setParent(self)
 
     def isRoot(self):
+        '''return true if a given node is a root, or false otherwise'''
         return self.parent == None
 
 class Graph:
     def __init__(self):
+        '''By definition, a graph is a collection of root nodes that have children that are represented in lists, whose children
+        too are represented in lists, and so on and so forth'''
         self.roots = []
 
     def getLastRoot(self):
@@ -66,6 +85,7 @@ class Graph:
         return lastChildAtTheLevel
         
     def add_node(self, content, level, lineNumber):
+        '''Add a node to the graph in breadth first order'''
         if level == 1:
             newNode = Node(content, level, lineNumber, None)
             self.roots.append(newNode)
@@ -76,6 +96,7 @@ class Graph:
             lastChildAtPrecedingLevel.addChild(newNode)
 
     def display(self):
+        '''Display the nodes in the graph'''
         for root in self.roots:
             stack = [(root, 0)]
 
