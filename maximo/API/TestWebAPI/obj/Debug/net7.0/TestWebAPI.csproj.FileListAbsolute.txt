@@ -1,0 +1,70 @@
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\appsettings.json
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.exe
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.deps.json
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.runtimeconfig.json
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.pdb
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Dapper.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\MySqlConnector.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.csproj.AssemblyReference.cache
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.AssemblyInfoInputs.cache
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.AssemblyInfo.cs
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.csproj.CoreCompileInputs.cache
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets\msbuild.TestWebAPI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets\msbuild.build.TestWebAPI.props
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.TestWebAPI.props
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.TestWebAPI.props
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\scopedcss\bundle\TestWebAPI.styles.css
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.csproj.CopyComplete
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\refint\TestWebAPI.dll
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.pdb
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.genruntimeconfig.cache
+C:\Users\gbg63\Desktop\Dickinson Studies\84 Lumber\New folder\TestWebAPI\TestWebAPI\obj\Debug\net7.0\ref\TestWebAPI.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\appsettings.json
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.exe
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.deps.json
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.runtimeconfig.json
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\TestWebAPI.pdb
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Dapper.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\MySqlConnector.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.csproj.AssemblyReference.cache
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.AssemblyInfoInputs.cache
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.AssemblyInfo.cs
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.csproj.CoreCompileInputs.cache
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets\msbuild.TestWebAPI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets\msbuild.build.TestWebAPI.props
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.TestWebAPI.props
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.TestWebAPI.props
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\scopedcss\bundle\TestWebAPI.styles.css
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.csproj.CopyComplete
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\refint\TestWebAPI.dll
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.pdb
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\TestWebAPI.genruntimeconfig.cache
+C:\Users\student\Desktop\Maxi PC\TestWebAPI\TestWebAPI\obj\Debug\net7.0\ref\TestWebAPI.dll
