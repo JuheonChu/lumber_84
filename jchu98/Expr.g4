@@ -3,90 +3,115 @@ grammar Expr;
 // Parser Rules
 program : (statement | labelStatement)* ;
 
+statement
+   : assignment
+   | conditionalStatement
+   | functionCall
+   | commentStatement
+   | statementSequence // Multiple statements on one line
+   ;
 
-statement : assignment
-          | conditionalStatement
-          | functionCall
-          | commentStatement
-          | statementSequence // Multiple statements on one line
-          ;
-
-statementSequence: statement ('.' statement)+
+statementSequence: statement ('.' statement)+ ;
 
 labelStatement : label ':' statement ; // Handling labels for statements
 
 assignment : variable '=' expression ;
-conditionalStatement : 'IF' expression relationalOperator expression 'THEN' statement ;
+
+conditionalStatement : 'IF' expression 'THEN' statement ;
 
 functionCall : 'CALL' functionReference;
 
 expression
-   : '-' expression                                 #UnaryMinusExpr
-   | '(' expression ')'                            #ParensExpr
-   | functionReference                             #FuncRefExpr
-   | variable                                      #VarExpr
-   | constant                                      #ConstExpr
-   | expression arithmeticOperators expression     #ArithExpr
-   | expression relationalOperator expression      #RelExpr
-   | expression logicalOperator expression         #LogicExpr
+   : expression '^' expression            # PowerExpr
+   | expression '*' expression            # MulExpr
+   | expression '/' expression            # DivExpr
+   | expression '+' expression            # AddExpr
+   | expression '-' expression            # SubExpr
+   | expression relationalOperator expression # RelExpr
+   | expression logicalOperator expression    # LogicExpr
+   | expression '&' expression                # ConcatExpr
+   | '-' expression                           # UnaryMinusExpr
+   | '(' expression ')'                       # ParensExpr
+   | functionReference                        # FuncRefExpr
+   | variable                                 # VarExpr
+   | constant                                 # ConstExpr
    ;
 
-functionReference : ID '(' expression ')'   // # FuncCallExpr
-                  | arrayReference          // # ArrayRefExpr
-		  | ID			    // # VarRef 
-                  ;
+functionReference
+   : ID '(' expressionList? ')' // Function calls and array references
+   | ID                        // Variable reference
+   ;
 
-arrayReference : ID '(' expression (',' expression)* ')' ; // Multi-dimensional arrays
+arrayReference : ID '(' expressionList ')' ; // Multi-dimensional arrays
 
-expressionList : expression (',' expression)* ;variable : ID ( '%' | '$' )? ;
+expressionList : expression (',' expression)* ;
 
-constant : STRING_LITERAL | NUMBER | REAL_NUMBER ;
+variable : ID ( '%' | '$' )? ;
 
-commentStatement : 'REM' ~[\r\n]* ; // To capture comments, ignoring newlines
-
-label : ID ; // Label definitions
-
-variable : ID ( '.' ID )? ('$')? ;
-constant : STRING | NUMBER ;
+constant
+   : HEX_LITERAL // Hexadecimal numbers
+   | BIN_LITERAL // Binary numbers
+   | STRING_LITERAL
+   | NUMBER
+   | REAL_NUMBER
+   ;
 
 commentStatement : 'REM' ~[\r\n]* ; // To capture comments, ignoring newlines
 
 label : ID ; // Label definitions
 
 // Lexer Rules
-ID : [a-zA-Z] [a-zA-Z0-9]* ;
+HEX_LITERAL : '0' ('x' | 'X') [0-9a-fA-F]+ ;
+BIN_LITERAL : '0' ('b' | 'B') [01]+ ;
 
-// Adjusted rules to account for string identifiers and case-insensitivity
-STRING_LITERAL : '"' ( ~["\r\n] | '""' )* '"' ;
+STRING_LITERAL : '"' (~["\r\n])* '"';
+NUMBER : [0-9]+ ;
+REAL_NUMBER : [0-9]+ '.' [0-9]* | '.' [0-9]+ ;
 
-NUMBER : '-'? [0-9]+ ;
-REAL_NUMBER : NUMBER ('.' [0-9]+)? (E [+-]? [0-9]+)? ;
+relationalOperator
+   : '<'
+   | '<='
+   | '>'
+   | '>='
+   | '=='
+   | '!='
+   ;
 
-// Whitespace and comments
-WS : [ \t\r\n]+ -> skip ;
+logicalOperator
+   : 'AND'
+   | 'OR'
+   | 'NOT'
+   | 'XOR'
+   ;
 
-// To handle CBASIC's case insensitivity, you would need to either
-// handle it in the parser or use a case-insensitive mode in your lexer.
+ID : [a-zA-Z_][a-zA-Z_0-9]* ;
 
-// For simplicity here, this grammar assumes all input is uppercase.
-// Otherwise, use a tool or option to convert lowercase letters to uppercase
-// before lexing or add lexer rules to match both cases.
+ASSIGN : '=' ;
+PLUS : '+' ;
+MINUS : '-' ;
+MULT : '*' ;
+DIV : '/' ;
+POWER : '^' ;
+AND_OP : '&&' ;
+OR_OP : '||' ;
+NOT_OP : '!' ;
+XOR_OP : '^^' ;
 
-arithmeticOperators : '+' | '-' | '*' | '/' ;
-relationalOperator : '<' | '<=' | '>' | '>=' | '==' | '!=' ;
-logicalOperator : 'AND' | 'OR' | 'NOT' ;
+LPAREN : '(' ;
+RPAREN : ')' ;
+LBRACE : '{' ;
+RBRACE : '}' ;
+LBRACK : '[' ;
+RBRACK : ']' ;
 
-LINE_CONTINUATION : '\\' -> skip ; // For line continuation characte
+SEMI : ';' ;
+COLON : ':' ;
+COMMA : ',' ;
+DOT : '.' ;
+AMPERSAND : '&' ;
 
-// To handle CBASIC's case insensitivity, you would need to either
-// handle it in the parser or use a case-insensitive mode in your lexer.
+WS : [ \t\r\n]+ -> skip ; // Skip whitespace
 
-// For simplicity here, this grammar assumes all input is uppercase.
-// Otherwise, use a tool or option to convert lowercase letters to uppercase
-// before lexing or add lexer rules to match both cases.
+LINE_COMMENT : '//' ~[\r\n]* -> skip ;
+BLOCK_COMMENT : '/*' .*? '*/' -> skip ;
 
-arithmeticOperators : '+' | '-' | '*' | '/' ;
-relationalOperator : '<' | '<=' | '>' | '>=' | '==' | '!=' ;
-logicalOperator : 'AND' | 'OR' | 'NOT' ;
-
-LINE_CONTINUATION : '\\' -> skip ; // For line continuation character
