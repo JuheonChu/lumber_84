@@ -1,7 +1,7 @@
 grammar Expr;
 
 // Parser Rules
-program : (statement | labelStatement)* ;
+program : (statement | labelStatement)* EOF ;
 
 statement
    : assignment
@@ -15,38 +15,51 @@ statementSequence: statement ('.' statement)+ ;
 
 labelStatement : label ':' statement ; // Handling labels for statements
 
-assignment : variable '=' expression ;
+assignment : variable ASSIGN expression ;
 
-conditionalStatement : 'IF' expression 'THEN' statement ;
+conditionalStatement : 'IF' expression 'THEN' statement ( 'ELSE' statement )? ;
 
-functionCall : 'CALL' functionReference;
+functionCall : 'CALL' functionReference ( LPAREN expressionList? RPAREN )? 
+
 
 expression
-   : expression '^' expression            # PowerExpr
-   | expression '*' expression            # MulExpr
-   | expression '/' expression            # DivExpr
-   | expression '+' expression            # AddExpr
-   | expression '-' expression            # SubExpr
+   : expression POWER expression            # PowerExpr
+   | expression MULT expression             # MulExpr
+   | expression DIV expression              # DivExpr
+   | expression PLUS expression             # AddExpr
+   | expression MINUS expression            # SubExpr
    | expression relationalOperator expression # RelExpr
    | expression logicalOperator expression    # LogicExpr
-   | expression '&' expression                # ConcatExpr
-   | '-' expression                           # UnaryMinusExpr
-   | '(' expression ')'                       # ParensExpr
+   | expression AMPERSAND expression          # ConcatExpr
+   | MINUS expression                         # UnaryMinusExpr
+   | LPAREN expression RPAREN                 # ParensExpr
    | functionReference                        # FuncRefExpr
    | variable                                 # VarExpr
    | constant                                 # ConstExpr
    ;
 
-functionReference
-   : ID '(' expressionList? ')' // Function calls and array references
-   | ID                        // Variable reference
+
+
+relationalOperator
+   : LT | LTEQ | GT | GTEQ | EQ | NOTEQ
    ;
 
-arrayReference : ID '(' expressionList ')' ; // Multi-dimensional arrays
+logicalOperator
+   : AND | OR | NOT | XOR
+   ;
 
-expressionList : expression (',' expression)* ;
 
-variable : ID ( '%' | '$' )? ;
+functionReference
+   : ID LPAREN expressionList? RPAREN // Function calls with parameters
+   | ID                              // Function calls without parameters
+   ;
+
+arrayReference : ID LPAREN expressionList RPAREN ; // Multi-dimensional arrays
+
+expressionList : expression (COMMA expression)* ;
+
+variable : ID ( PERCENT | DOLLAR )? 
+
 
 constant
    : HEX_LITERAL // Hexadecimal numbers
@@ -56,62 +69,58 @@ constant
    | REAL_NUMBER
    ;
 
-commentStatement : 'REM' ~[\r\n]* ; // To capture comments, ignoring newlines
+commentStatement : REM ;
 
 label : ID ; // Label definitions
 
-// Lexer Rules
-HEX_LITERAL : '0' ('x' | 'X') [0-9a-fA-F]+ ;
-BIN_LITERAL : '0' ('b' | 'B') [01]+ ;
+// Lexer rules (Tokens)
+LT          : '<' ;
+LTEQ        : '<=' ;
+GT          : '>' ;
+GTEQ        : '>=' ;
+EQ          : '==' ;
+NOTEQ       : '<>' ;
 
-STRING_LITERAL : '"' (~["\r\n])* '"';
-NUMBER : [0-9]+ ;
+AND         : 'AND' ;
+OR          : 'OR' ;
+NOT         : 'NOT' ;
+XOR         : 'XOR' ;
+
+POWER       : '^' ;
+MULT        : '*' ;
+DIV         : '/' ;
+PLUS        : '+' ;
+MINUS       : '-' ;
+AMPERSAND   : '&' ;
+
+ASSIGN      : '=' ;
+LPAREN      : '(' ;
+RPAREN      : ')' ;
+LBRACE      : '{' ;
+RBRACE      : '}' ;
+LBRACK      : '[' ;
+RBRACK      : ']' ;
+
+SEMI        : ';' ;
+COLON       : ':' ;
+COMMA       : ',' ;
+DOT         : '.' ;
+PERCENT     : '%' ;
+DOLLAR      : '$' ;
+
+ESCAPE_SEQUENCE : '\\' .; // Defines an escape sequence
+
+ID          : [a-zA-Z_] [a-zA-Z_0-9]* ;
+INT         : [0-9]+ ;
+FLOAT       : [0-9]+ '.' [0-9]* | '.' [0-9]+ ;
+STRING_LITERAL : '"' ( ~["\\] | '\\' . )* '"' ;
+HEX_LITERAL : '0x' [0-9A-Fa-f]+ ;
+BIN_LITERAL : '0b' ('0' | '1')+ ;
+NUMBER      : [0-9]+ ;
 REAL_NUMBER : [0-9]+ '.' [0-9]* | '.' [0-9]+ ;
 
-relationalOperator
-   : '<'
-   | '<='
-   | '>'
-   | '>='
-   | '=='
-   | '!='
-   ;
-
-logicalOperator
-   : 'AND'
-   | 'OR'
-   | 'NOT'
-   | 'XOR'
-   ;
-
-ID : [a-zA-Z_][a-zA-Z_0-9]* ;
-
-ASSIGN : '=' ;
-PLUS : '+' ;
-MINUS : '-' ;
-MULT : '*' ;
-DIV : '/' ;
-POWER : '^' ;
-AND_OP : '&&' ;
-OR_OP : '||' ;
-NOT_OP : '!' ;
-XOR_OP : '^^' ;
-
-LPAREN : '(' ;
-RPAREN : ')' ;
-LBRACE : '{' ;
-RBRACE : '}' ;
-LBRACK : '[' ;
-RBRACK : ']' ;
-
-SEMI : ';' ;
-COLON : ':' ;
-COMMA : ',' ;
-DOT : '.' ;
-AMPERSAND : '&' ;
-
-WS : [ \t\r\n]+ -> skip ; // Skip whitespace
-
-LINE_COMMENT : '//' ~[\r\n]* -> skip ;
-BLOCK_COMMENT : '/*' .*? '*/' -> skip ;
-
+WS          : [ \t\r\n]+ -> skip ;
+// Comments
+REM             : 'REM' ~[\r\n]* -> skip ;
+LINE_COMMENT    : '//' ~[\r\n]* -> skip ;
+BLOCK_COMMENT   : '/*' .*? '*/' -> skip ;
