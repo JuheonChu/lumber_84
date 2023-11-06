@@ -19,8 +19,9 @@ assignment : variable ASSIGN expression ;
 
 conditionalStatement : 'IF' expression 'THEN' statement ( 'ELSE' statement )? ;
 
-functionCall : 'CALL' functionReference ( LPAREN expressionList? RPAREN )? 
-
+functionCall : 'CALL' functionReference ( LPAREN expressionList? RPAREN )?
+             | functionReference // For direct function calls like ABS(x)
+             ;
 
 expression
    : expression POWER expression            # PowerExpr
@@ -38,8 +39,6 @@ expression
    | constant                                 # ConstExpr
    ;
 
-
-
 relationalOperator
    : LT | LTEQ | GT | GTEQ | EQ | NOTEQ
    ;
@@ -48,9 +47,9 @@ logicalOperator
    : AND | OR | NOT | XOR
    ;
 
-
 functionReference
-   : ID LPAREN expressionList? RPAREN // Function calls with parameters
+   : ABS | ASC | ATN | ATTACH | ID // Adding new functions here
+   | ID LPAREN expressionList? RPAREN // Function calls with parameters
    | ID                              // Function calls without parameters
    ;
 
@@ -58,8 +57,7 @@ arrayReference : ID LPAREN expressionList RPAREN ; // Multi-dimensional arrays
 
 expressionList : expression (COMMA expression)* ;
 
-variable : ID ( PERCENT | DOLLAR )? 
-
+variable : ID ( PERCENT | DOLLAR )?
 
 constant
    : HEX_LITERAL // Hexadecimal numbers
@@ -74,6 +72,11 @@ commentStatement : REM ;
 label : ID ; // Label definitions
 
 // Lexer rules (Tokens)
+ABS         : 'ABS';
+ASC         : 'ASC';
+ATN         : 'ATN';
+ATTACH      : 'ATTACH';
+
 LT          : '<' ;
 LTEQ        : '<=' ;
 GT          : '>' ;
@@ -123,4 +126,3 @@ WS          : [ \t\r\n]+ -> skip ;
 // Comments
 REM             : 'REM' ~[\r\n]* -> skip ;
 LINE_COMMENT    : '//' ~[\r\n]* -> skip ;
-BLOCK_COMMENT   : '/*' .*? '*/' -> skip ;
