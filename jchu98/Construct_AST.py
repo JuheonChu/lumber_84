@@ -1,64 +1,117 @@
 from antlr4 import *
+from antlr4.tree.Tree import TerminalNodeImpl
 from ExprLexer import ExprLexer
 from ExprParser import ExprParser
+from antlr4.tree.Trees import Trees
+import re
 
 class Node:
+    pass
+
+class Program(Node):
+    def __init__(self, statements):
+        self.statements = statements
+
+    def to_python(self):
+        return '\n'.join(s.to_python() for s in self.statements)
+
+class Statement(Node):
+    pass
+
+class Assignment(Statement):
+    def __init__(self, variable, expression):
+        self.variable = variable
+        self.expression = expression
+
+    def to_python(self):
+        return f"{self.variable.to_python()} = {self.expression.to_python()}"
+
+class Expression(Node):
+    pass
+
+class BinaryExpression(Expression):
+    def __init__(self, left, operator, right):
+        self.left = left
+        self.operator = operator
+        self.right = right
+
+    def to_python(self):
+        op = {'+': '+', '-': '-', '*': '*', '/': '/'}.get(self.operator, self.operator)
+        return f"({self.left.to_python()} {op} {self.right.to_python()})"
+
+class FunctionCall(Expression):
+    def __init__(self, function_name, argument=None):
+        self.function_name = function_name
+        self.argument = argument
+
+    def to_python(self):
+        if self.function_name == 'ABS':
+            return f"abs({self.argument.to_python()})"
+        elif self.function_name == 'CALL':
+            return f"{self.argument.to_python()}()"
+        # Add more function mappings as necessary
+
+class Variable(Expression):
+    def __init__(self, name):
+        self.name = name
+
+    def to_python(self):
+        return self.name
+
+class Constant(Expression):
     def __init__(self, value):
         self.value = value
-        self.children = []
 
-def parse(tokens):
-    stack = []
-    for token in tokens:
-        if token == '(':
-            stack.append(Node(None))
-        elif token == ')':
-            child = stack.pop()
-            if stack:
-                stack[-1].children.append(child)
-            else:
-                return child
-        else:
-            stack[-1].children.append(Node(token))
-    return stack[0]
+    def to_python(self):
+        return self.value
 
-def tokenize(input_string):
-    return input_string.replace('(', ' ( ').replace(')', ' ) ').split()
+class ConditionalStatement(Statement):
+    def __init__(self, condition, true_branch):
+        self.condition = condition
+        self.true_branch = true_branch
 
-def traverse(node, line=1):
-    output = []
-    output.append((node.value, line))
-    for child in node.children:
-        line += 1
-        child_output, line = traverse(child, line)
-        output.extend(child_output)
-    return output, line
+    def to_python(self):
+        return f"if {self.condition.to_python()}:\n    {self.true_branch.to_python()}"
+
+# A mock function to 'parse' the AST string - you will need to implement real parsing logic based on your AST format
+def parse_ast(ast_string):
+    # This should be replaced with a real parser
+    # For now, we'll just return a hardcoded structure
+    x = Variable('x')
+    y = Variable('y')
+    z = Variable('z')
+    expr1 = FunctionCall('ABS', BinaryExpression(Constant(150), '-', y))
+    expr2 = BinaryExpression(Constant(100), '+', Constant(250))
+    expr3 = BinaryExpression(BinaryExpression(x, '*', y), '/', Constant(3.5))
+    assignment1 = Assignment(x, expr1)
+    assignment2 = Assignment(y, expr2)
+    assignment3 = Assignment(z, expr3)
+    condition = ConditionalStatement(BinaryExpression(x, '<', y), FunctionCall('CALL', Variable('DISPLAY')))
+    return Program([assignment1, assignment2, assignment3, condition])
+
+# The function to convert the AST to Python code
+def ast_to_python(ast_string):
+    ast = parse_ast(ast_string)
+    return ast.to_python()
 
 
 
-# Open and read from the file 'bas.bas'
+
+# Read the input file and create a lexer and parser
 with open('TEST.BAS', 'r') as file:
     input_stream = InputStream(file.read())
 
-# Lexer separates the characters into tokens according to the grammar we defined.
 lexer = ExprLexer(input_stream)
-token_stream = CommonTokenStream(lexer)
-# Parser builds the Abstract Syntax Tree
-parser = ExprParser(token_stream)
+stream = CommonTokenStream(lexer)
+parser = ExprParser(stream)
 
-tree = parser.program()  # Use the starting rule (assuming it's 'program')
+# Get the parse tree
+tree = parser.program()
 
+# Example usage
+ast_string = tree.toStringTree(recog=parser)
 
-# Construct the tokenized Abstract Syntax Tree 
-tokenized_string = tree.toStringTree(recog=parser) 
-
-tokens = tokenize(tokenized_string)
-ast = parse(tokens)
-output, _ = traverse(ast)
-
-
-for node, line in output[1:]:  # skip the root
-    print(f"{node},{line}")
-
-
-
+print(ast_string)
+# Generate Python code from the AST string
+python_code = ast_to_python(ast_string)
+print(python_code)
