@@ -4,6 +4,8 @@
 - This approach is a way to address the issue of updating the codebase to a modern language using GPT or another similar language model without sending the entire codebase to the language model at once. To be able to port the codebase the AI needs to understand the entirety of the codebase, which can be done either by sending the entire codebase to the language model at once or by breaking the codebase up into parts. Breaking the codebase up into parts is most likely required because language models have a limited input size and in the rare case where they don’t have a limited input size if a crash or any kind of error were to occur all progress would be lost. 
 
 # Steps for modernizing each file in codebase  
+Human intervention might occur between each step to validate each step and ensure the success of the next step.
+
 - Iterate through every file in code base and add to the database the file name and location of the file in the file tree.
 
 - Iterate through every function in each file and store the CBASIC function code encoded as base64 in the database with metadata describing the function (input, output, and if the function calls other non-native functions in the codebase).
@@ -23,7 +25,7 @@
 
 - Special attention needs to be given to variable names so that collision doesn’t occur. This could be done by either storing the variables from the codebase in the database or through specialized prompts to generate new variable names that won’t collide with one another.
 
-- An intelligent agent might need to be designed to facilitate the recursive process of generating the new modernized code and checking that the could that was generated would actually work.
+- An intelligent agent might need to be designed to facilitate generating the new modernized code. This process might need to be recursive because the model might make mistakes generating code but will be able to identify and rectify its mistakes after its output is fed back to it as a new input.
     - The following is a simple diagram of an intelligent agent from Wikipedia. 
 ![](https://upload.wikimedia.org/wikipedia/commons/3/3f/IntelligentAgent-SimpleReflex.png)
 
