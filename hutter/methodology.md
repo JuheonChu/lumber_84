@@ -12,7 +12,7 @@ Human intervention might occur between each step to validate each step and ensur
 
 - Iterate through all the functions stored in the database that don’t call other non-native functions and decode the function code and send it to GPT to be converted to a modern language then store the now modernized code in the database as base64 with the metadata about the function (input, output, and a description of the function).
 
-- Iterate through all the functions that call non-native functions in the code base and decode the function from base6 and send it to GPT along with the metadata for all the non-native functions that this function calls then store it encoded as base64 to the database with metadata describing the function (input, output, and a description of the function).
+- Iterate through all the functions that call non-native functions in the code base and decode the function from base64 and send it to GPT along with the metadata for all the non-native functions that this function calls then store it encoded as base64 to the database with metadata describing the function (input, output, and a description of the function).
 
 - Iterate through the database where the file names and file locations in file tree is located and for every file iterate through the functions that are within that file and assemble a new modernized source code file using the modernized functions that are stored as base64 in the database. The newly generated file can be sent to GPT again to organize the code and rename variables.
 
