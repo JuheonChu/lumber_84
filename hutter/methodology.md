@@ -22,6 +22,10 @@
     - The vocabulary of the language can be defined and using simple code the CBASIC functions can be converted to pseudocode that GPT can understand which can then be converted to a modern language.
 
 - Special attention needs to be given to variable names so that collision doesn’t occur. This could be done by either storing the variables from the codebase in the database or through specialized prompts to generate new variable names that won’t collide with one another.
-  
+
+- An intelligent agent might need to be designed to facilitate the recursive process of generating the new modernized code and checking that the could that was generated would actually work.
+    - The following is a simple diagram of an intelligent agent from Wikipedia. 
+![](https://upload.wikimedia.org/wikipedia/commons/3/3f/IntelligentAgent-SimpleReflex.png)
+
 # Organization of the database
 - TBD
