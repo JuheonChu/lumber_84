@@ -80,10 +80,46 @@ class ConditionalStatement(Statement):
     def to_python(self):
         return f"if {self.condition.to_python()}:\n    {self.true_branch.to_python()}"
 
+<<<<<<< HEAD
 # Convert AST to Python code
 def ast_to_python(tree):
     visitor = CBASICVisitor()
     ast = visitor.visit(tree)
+=======
+# A mock function to 'parse' the AST string - you will need to implement real parsing logic based on your AST format
+def parse_ast(ast_string):
+    # This should be replaced with a real parser
+    # For now, we'll just return a hardcoded structure
+    x = Variable('x')
+    y = Variable('y')
+    z = Variable('z')
+    tempA = Variable('tempA')
+    tempB = Variable('tempB')
+    val = Variable('val')
+    name = Variable('name')
+    expr1 = FunctionCall('ABS', Constant(-150))
+    expr2 = BinaryExpression(Constant(100), '+', Constant(250))
+    expr3 = BinaryExpression(BinaryExpression(x, '*', y), '/', Constant(3.5))
+    expr4 = Constant(20.5)
+    expr5 = BinaryExpression(tempA, '+', Constant(15.3))
+    expr6 = FunctionCall('ABS', BinaryExpression(tempA, '-', tempB))
+    expr7 = Constant("'John'")
+    assignment1 = Assignment(x, expr1)
+    assignment2 = Assignment(y, expr2)
+    assignment3 = Assignment(z, expr3)
+    assignment4 = Assignment(tempA, expr4)
+    assignment5 = Assignment(tempB, expr5)
+    assignment6 = Assignment(val, expr6)
+    assignment7 = Assignment(name, expr7)
+    condition1 = ConditionalStatement(BinaryExpression(x, '<', y), FunctionCall('CALL', Variable('DISPLAY')))
+    condition2 = ConditionalStatement(BinaryExpression((FunctionCall('ABS', BinaryExpression(x, '-', y))), '==', Constant(0)), FunctionCall('CALL', Variable('WARN')))
+    condition3 = ConditionalStatement(BinaryExpression(tempB, '>', Constant(35)), FunctionCall('CALL', Variable('COOLING')))
+    return Program([assignment1, assignment2, assignment3, condition1, condition2, assignment4, assignment5, condition3, assignment6, assignment7])
+
+# The function to convert the AST to Python codebase
+def ast_to_python(ast_string):
+    ast = parse_ast(ast_string)
+>>>>>>> 8688980eb25a1dbb40a2888eb0eb98edc0189d47
     return ast.to_python()
 
 
