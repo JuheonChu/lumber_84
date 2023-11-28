@@ -1,3 +1,4 @@
+from CBASICVisitor import CBASICVisitor
 from antlr4 import *
 from antlr4.tree.Tree import TerminalNodeImpl
 from ExprLexer import ExprLexer
@@ -5,6 +6,10 @@ from ExprParser import ExprParser
 from antlr4.tree.Trees import Trees
 import re
 
+class Node:
+    pass
+
+# Node classes
 class Node:
     pass
 
@@ -36,7 +41,7 @@ class BinaryExpression(Expression):
         self.right = right
 
     def to_python(self):
-        op = {'+': '+', '-': '-', '*': '*', '/': '/'}.get(self.operator, self.operator)
+        op = {'+': '+', '-': '-', '*': '*', '/': '/', '<': '<', '<=': '<=', '>': '>', '>=': '>=', '=': '==', '<>': '!='}.get(self.operator, self.operator)
         return f"({self.left.to_python()} {op} {self.right.to_python()})"
 
 class FunctionCall(Expression):
@@ -50,6 +55,8 @@ class FunctionCall(Expression):
         elif self.function_name == 'CALL':
             return f"{self.argument.to_python()}()"
         # Add more function mappings as necessary
+        else:
+            return f"{self.function_name}({self.argument.to_python()})"
 
 class Variable(Expression):
     def __init__(self, name):
@@ -73,28 +80,11 @@ class ConditionalStatement(Statement):
     def to_python(self):
         return f"if {self.condition.to_python()}:\n    {self.true_branch.to_python()}"
 
-# A mock function to 'parse' the AST string - you will need to implement real parsing logic based on your AST format
-def parse_ast(ast_string):
-    # This should be replaced with a real parser
-    # For now, we'll just return a hardcoded structure
-    x = Variable('x')
-    y = Variable('y')
-    z = Variable('z')
-    expr1 = FunctionCall('ABS', BinaryExpression(Constant(150), '-', y))
-    expr2 = BinaryExpression(Constant(100), '+', Constant(250))
-    expr3 = BinaryExpression(BinaryExpression(x, '*', y), '/', Constant(3.5))
-    assignment1 = Assignment(x, expr1)
-    assignment2 = Assignment(y, expr2)
-    assignment3 = Assignment(z, expr3)
-    condition = ConditionalStatement(BinaryExpression(x, '<', y), FunctionCall('CALL', Variable('DISPLAY')))
-    return Program([assignment1, assignment2, assignment3, condition])
-
-# The function to convert the AST to Python code
-def ast_to_python(ast_string):
-    ast = parse_ast(ast_string)
+# Convert AST to Python code
+def ast_to_python(tree):
+    visitor = CBASICVisitor()
+    ast = visitor.visit(tree)
     return ast.to_python()
-
-
 
 
 # Read the input file and create a lexer and parser
