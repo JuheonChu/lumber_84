@@ -6,4 +6,11 @@
 
 # ANTLR4 Pipeline Operation (Command Line Interface)
 
-1. ``` antlr4 -Dlanguage=Python3 Expr.g4 -o <folder name> ```: This will run ANTLR4 pipeline that creates the visitor and listener. 
+1. Download Python:
+  *   ``` sudo apt-get update ```: Update the packages
+  *   ``` sudo apt install python3 ```: Install Python module
+  *   ``` sudo apt install python3-pip ```: Install pip packages
+2. Install the ANTLR Framework:
+
+3. Run the ANTLR4 pipeline.
+  * Run the pipeline: ``` antlr4 -Dlanguage=Python3 Expr.g4 -o <folder name> ``` 
