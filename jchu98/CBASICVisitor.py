@@ -91,7 +91,3 @@ class CBASICVisitor(ExprVisitor):
         left = self.visit(ctx.expression(0))
         right = self.visit(ctx.expression(1))
         return PowerExpression(left, right)  # Assuming you have a PowerExpression class
-
-
-# You need to create classes for UnaryExpression, LogicalExpression, and PowerExpression 
-

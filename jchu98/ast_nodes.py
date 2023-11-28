@@ -62,29 +62,16 @@ class PowerExpression(BinaryExpression):
     def to_python(self):
         return f"pow({self.left.to_python()}, {self.right.to_python()})"
 
-
 class FunctionCall(Expression):
     def __init__(self, function_name, argument=None):
-        self.function_name = function_name
+        # Sanitize the function name to create a valid Python function name
+        self.function_name = function_name.replace('.', '_')
         self.argument = argument
 
     def to_python(self):
-        # Map each CBASIC function to a Python function or code snippet
-        if self.function_name == 'ABS':
-            return f"abs({self.argument.to_python()})"
-        elif self.function_name == 'DISPLAY':
-            # Handle DISPLAY function, with or without an argument
-            if self.argument:
-                return f"print({self.argument.to_python()})"
-            else:
-                return "print()"  # or some default print statement
-        elif self.function_name == 'CALL':
-            # Assuming CALL invokes another function
-            return f"{self.argument.to_python()}()"
-        # Add more CBASIC function mappings as necessary
-        else:
-            raise NotImplementedError(f"Function {self.function_name} is not implemented in the converter.")
-
+        # Dynamically construct the function call
+        arg_str = self.argument.to_python() if self.argument else ''
+        return f"{self.function_name}({arg_str})"
 
 
 class Variable(Expression):
@@ -111,4 +98,3 @@ class ConditionalStatement(Statement):
 
     def to_python(self):
         return f"if {self.condition.to_python()}:\n    {self.true_branch.to_python()}"
-
