@@ -6,7 +6,6 @@
 
 # ANTLR4 Pipeline Operation (Command Line Interface)
 
-
 1. Download ANTLR4 framework
   * ``` cd /usr/local/lib ```: Go to a directory that stores configuration files along with the installation packages.
   * ``` sudo wget https://www.antlr.org/download/antlr-4.13.1-complete.jar ```: Download the ANTLR4 jar file.
@@ -21,7 +20,7 @@
   *   ``` sudo apt-get update ```: Update the packages
   *   ``` sudo apt install python3 ```: Install Python module
   *   ``` sudo apt install python3-pip ```: Install pip packages
-4. At your home directory, clone this GitHub repository using ``` git clone "<URL>" ```. If your git command is not working, install git by running ``` sudo apt install git ```. 
+4. At your home directory, clone this GitHub repository using ``` git clone "https://github.com/JuheonChu/lumber_84.git" ```. If your git command is not working, install git by running ``` sudo apt install git ```. 
 5. Copy the grammar file ``` lumber_84/jchu98/Expr.g4 ``` into your working directory.
 6. Run the ANTLR4 pipeline.
   * Run the pipeline w/o listener: ``` antlr4 -Dlanguage=Python3 Expr.g4 -o <folder name> ```
