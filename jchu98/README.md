@@ -4,7 +4,9 @@
 2. Google Colab
 3. Docker
 
-# ANTLR4 Pipeline Operation (Command Line Interface)
+# How to run the program?
+
+## Command line Interface (CLI)
 
 1. Download ANTLR4 framework
   * ``` cd /usr/local/lib ```: Go to a directory that stores configuration files along with the installation packages.
