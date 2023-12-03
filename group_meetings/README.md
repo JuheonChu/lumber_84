@@ -1,1 +1,1 @@
-This directory stores all the documents used during the group meeting betweeh 84 Lumber professionals and Dickinson CS students.
+This directory stores all the documents used during the group meeting betweeh 84 Lumber professionals and Dickinson CS students. All the group meeting information after October 24 is saved in the Powerpoint slide which recorded our cumulative progress status. 
