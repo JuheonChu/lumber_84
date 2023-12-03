@@ -8,3 +8,4 @@ This is a collaborative project between Lumber 84 application development team a
 - Group 1: Maximo Sanchez
 - Group 2: John Chu, Pranav Mishra, Youssif Goda and Shaikh Ibrahim (Ahnaf) Rahman, Michael Freda, Niloy Saha, Linh Hoang
 - Group 3: Boosung Kim, William Cheng
+- Group 4: Everett Hutter
