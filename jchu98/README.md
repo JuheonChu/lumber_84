@@ -12,8 +12,7 @@
 
 2. Set ANTLR4 as an Environment Variable
   * ``` nano ~/.bashrc ```: Open your ``` .bashrc ``` file.
-  * Add the following line at the end of the ```.bashrc``` file.
-  ** ``` export CLASSPATH=".:/usr/local/lib/antlr-4.9.2-complete.jar:$CLASSPATH" ```
+  * Add the following line at the end of the ```.bashrc``` file: ``` export CLASSPATH=".:/usr/local/lib/antlr-4.9.2-complete.jar:$CLASSPATH" ```
   * Save and close the file
   * Activate the changes by running the ``` source ~/.bashrc ``` command.
 3. Download Python:
